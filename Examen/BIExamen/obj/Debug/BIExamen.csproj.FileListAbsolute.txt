@@ -1,0 +1,14 @@
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\BIExamen.dll.config
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\BIExamen.dll
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\BIExamen.pdb
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\Data.dll
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\EntityFramework.dll
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\Data.pdb
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\EntityFramework.xml
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\obj\Debug\BIExamen.csprojResolveAssemblyReference.cache
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\obj\Debug\BIExamen.dll
+C:\Users\Josepablo\Desktop\web\Examen\BIExamen\obj\Debug\BIExamen.pdb

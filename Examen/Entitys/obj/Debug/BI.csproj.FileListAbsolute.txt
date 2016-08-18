@@ -1,0 +1,3 @@
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\obj\Debug\BI.csprojResolveAssemblyReference.cache
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\obj\Debug\Entitys.dll
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\obj\Debug\Entitys.pdb

@@ -1,0 +1,12 @@
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\Entitys.dll.config
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\Entitys.dll
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\Entitys.pdb
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\EntityFramework.dll
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\EntityFramework.xml
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\obj\Debug\Entitys.csprojResolveAssemblyReference.cache
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\obj\Debug\Entitys.dll
+C:\Users\Josepablo\Desktop\web\Examen\Entitys\obj\Debug\Entitys.pdb

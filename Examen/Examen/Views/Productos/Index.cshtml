@@ -1,0 +1,304 @@
+﻿@model IEnumerable<Data.Modelos.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <button type="button" id="btnCreateNew" class="btn btn-primary" data-toggle="modal" data-target="#ProductoModal">
+        Create New
+    </button>
+</p>
+<table class="table" id="ListaProductos">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.familia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.casaFabri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaIngre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </th>
+        <th></th>
+    </tr>
+    <tbody></tbody>
+</table>
+
+<div class="modal fade" id="ClienteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><label id="title"></label></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="hidden" class="form-control" id="Id" />
+                            @Html.DisplayNameFor(model => model.nombre)
+                            <input type="text" id="cedula" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.marca)
+                            <input type="text" id="nombre" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.familia)
+                            <input type="text" id="apellido" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.casaFabri)
+                            <input type="date" id="FechaNacid" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.Tipo)
+                            <input type="text" id="direccion" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.departamento)
+                            <input type="checkbox" id="estadoCivil" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.activo)
+                            <input type="checkbox" id="estadoCivil" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.fechaIngre)
+                            <input type="date" id="sexo" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.unidad)
+                            <input type="date" id="FechaIngre" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayNameFor(model => model.impuesto)
+                            <input type="number" id="Descuento" min="0" step="1" max="50" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnClose" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="btnSave" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            getClientes();
+        })
+
+         var isUpdatable = false;
+
+        // obtenemos todos los clientes en la tabla
+        function getClientes() {
+            $.ajax({
+                url: '/Productos/',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var rows = '';
+                    $.each(data, function (i, item) {
+                        rows += "<tr>"
+                        rows += "<td>" + item.id + "</td>"
+                        rows += "<td>" + item.nombre + "</td>"
+                        rows += "<td>" + item.marca + "</td>"
+                        rows += "<td>" + item.familia + "</td>"
+                        rows += "<td>" + item.casaFabri + "</td>"
+                        rows += "<td>" + item.Tipo + "</td>"
+                        rows += "<td>" + item.departamento + "</td>"
+                        rows += "<td>" + item.activo + "</td>"
+                        rows += "<td>" + item.fechaIngre + "</td>"
+                        rows += "<td>" + item.unidad + "</td>"
+                        rows += "<td>" + item.impuesto + "</td>"
+                        rows += "<td><button type='button' id='btnEdit' class='btn btn-default' onclick='return getDetailBook(" + item.Id + ")'>Edit</button> <button type='button' id='btnDelete' class='btn btn-danger' onclick='return deleteBook(" + item.Id + ")'>Delete</button></td>"
+                        rows += "</tr>";
+                        $("#ListaProductos tbody").html(rows);
+                    });
+                },
+                error: function (err) {
+                    alert("Error: " + err.responseText);
+                }
+            });
+        }
+
+        // detalles, se obtiene x id
+        function getDetailClientes(id) {
+            $("#title").text("Details");
+            $.ajax({
+                url: 'Productos/Details/' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $("#id").val(data.id);
+                    $("#cedula").val(data.cedula);
+                    $("#nombre").val(data.nombre);
+                    $("#apellido").val(data.apellido);
+                    $("#FechaNacid").val(data.FechaNacid);
+                    $("#direccion").val(data.direccion);
+                    $("#estadoCivil").val(data.estadoCivil);
+                    $("#sexo").val(data.sexo);
+                    $("#FechaIngre").val(data.FechaIngre);
+                    $("#tipo").val(data.tipo);
+                    $("#Descuento").val(data.Descuento);
+                    isUpdatable = true;
+                    $("#ProductoModal").modal('show');
+                },
+                error: function (err) {
+                    alert("Error: " + err.responseText);
+                }
+            });
+        }
+
+        // Guardar la informacion
+        $("#btnSave").click(function (e) {
+            var activo;
+
+            if ($("#activo").val() == "on") {
+                activo = true;
+
+            } else {
+                activo = false
+            }
+
+            var data = {
+             nombre         : $("#nombre").val(data.nombre),
+             marca          : $("#marca").val(data.marca),
+             familia        : $("#familia").val(data.familia),
+             casaFabri      : $("#casaFabri").val(data.casaFabri),
+             Tipo           : $("#Tipo").val(data.Tipo),
+             departamento   : $("#departamento").val(data.departamento),
+             activo         : $("#activo").val(activo),
+             fechaIngre     : $("#fechaIngre").val(data.FechaIngre),
+             unidad         : $("#unidad").val(data.unidad),
+             impuesto       : $("#impuesto").val(data.impuesto),
+            }
+
+            if (!isUpdatable) {
+                $.ajax({
+                    url: '/Productos/Create/',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    success: function (data) {
+                        getBooks();
+                        $("#ProductoModal").modal('hide');
+                        clear();
+                    },
+                    error: function (err) {
+                        alert("Error: " + err.responseText);
+                    }
+                })
+            }
+            else {
+                $.ajax({
+                    url: '/Productos/Update/',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    success: function (data) {
+                        getClientes();
+                        isUpdatable = false;
+                        $("#ProductoModal").modal('hide');
+                        clear();
+                    },
+                    error: function (err) {
+                        alert("Error: " + err.responseText);
+                    }
+                })
+            }
+        });
+
+        // eliminamos a los clientes
+        function deleteClientes(id) {
+            var confirmDelete = confirm("Do you want to delete this book ?");
+            if (confirmDelete) {
+                $.ajax({
+                    url: "/Productos/Delete/" + id,
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (data) {
+                        getBooks();
+                    },
+                    error: function (err) {
+                        alert("Error: " + err.responseText);
+                    }
+                });
+            }
+        }
+
+        $("#btnCreateNew").click(function () {
+            $("#title").text("Create New");
+        })
+
+        // accion para cerrar
+        $("#btnClose").click(function () {
+            clear();
+        });
+
+        // limpiador
+        function clear() {
+            $("#id").val("");
+            $("#cedula").val("");
+            $("#nombre").val("");
+            $("#apellido").val("");
+            $("#FechaNacid").val("");
+            $("#direccion").val("");
+            $("#estadoCivil").val("");
+            $("#sexo").val("");
+            $("#FechaIngre").val("");
+            $("#tipo").val("");
+            $("#Descuento").val("");
+        }
+
+    </script>
+}
